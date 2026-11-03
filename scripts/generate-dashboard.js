@@ -16,6 +16,8 @@ const resultsFile = process.argv[2] || 'reports/results.json';
 const outDir = process.argv[3] || 'site';
 const historyFile = process.argv[4] || path.join(outDir, 'history.json');
 const MAX_HISTORY = 30;
+// Strips terminal colour codes (ESC[...m) from Playwright error messages.
+const ANSI_COLORS = new RegExp(String.fromCharCode(27) + '\\[[0-9;]*m', 'g');
 
 if (!fs.existsSync(resultsFile)) {
   console.error(`No results file at ${resultsFile}. Run the tests first.`);
@@ -40,7 +42,7 @@ function walk(suite, trail) {
         outcome: last.status, // passed | failed | timedOut | skipped
         duration: t.results.reduce((a, r) => a + (r.duration || 0), 0),
         retries: Math.max(0, t.results.length - 1),
-        error: (last.error && (last.error.message || '').replace(/\u001b\[[0-9;]*m/g, '').split('\n')[0]) || '',
+        error: (last.error && (last.error.message || '').replace(ANSI_COLORS, '').split('\n')[0]) || '',
         knownDefect: (t.annotations || []).some((a) => a.type === 'known defect' || a.type === 'fail'),
       });
     }
