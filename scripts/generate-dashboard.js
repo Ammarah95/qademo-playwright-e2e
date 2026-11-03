@@ -11,6 +11,7 @@
  */
 const fs = require('fs');
 const path = require('path');
+const { renderCard } = require('./card');
 
 const resultsFile = process.argv[2] || 'reports/results.json';
 const outDir = process.argv[3] || 'site';
@@ -249,6 +250,7 @@ fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, 'index.html'), html);
 fs.writeFileSync(path.join(outDir, 'history.json'), JSON.stringify(history, null, 2));
 fs.writeFileSync(path.join(outDir, 'summary.json'), JSON.stringify(run, null, 2));
+fs.writeFileSync(path.join(outDir, 'card.svg'), renderCard({ summary, run, byProject, history }));
 console.log(
   `Dashboard -> ${path.join(outDir, 'index.html')}  (${summary.passed} passed, ${summary.failed} failed, ${summary.flaky} flaky, ${summary.skipped} skipped, ${summary.passRate}% pass rate)`,
 );
