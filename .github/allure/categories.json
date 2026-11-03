@@ -1,0 +1,6 @@
+[
+  { "name": "Known product defects", "matchedStatuses": ["passed"], "messageRegex": ".*Known defect.*" },
+  { "name": "Assertion failures", "matchedStatuses": ["failed"], "messageRegex": ".*expect.*" },
+  { "name": "Timeouts", "matchedStatuses": ["failed", "broken"], "messageRegex": ".*(Timeout|timed out).*" },
+  { "name": "Broken tests", "matchedStatuses": ["broken"] }
+]

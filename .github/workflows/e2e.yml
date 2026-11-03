@@ -1,0 +1,187 @@
+name: E2E Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Nightly regression – 02:17 IST (20:47 UTC)
+    - cron: '47 20 * * *'
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: 'Which tests to run'
+        type: choice
+        options: [all, smoke, regression]
+        default: all
+
+permissions:
+  contents: read
+
+concurrency:
+  group: e2e-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BASE_URL: https://qademo.com
+  NODE_VERSION: '20'
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install dependencies
+        run: if [ -f package-lock.json ]; then npm ci; else npm install --no-audit --no-fund; fi
+      - run: npm run lint
+
+  test:
+    name: Playwright (shard ${{ matrix.shard }}/2)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install dependencies
+        run: if [ -f package-lock.json ]; then npm ci; else npm install --no-audit --no-fund; fi
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: pw-${{ runner.os }}-${{ hashFiles('package.json') }}
+
+      - name: Install browsers
+        run: npx playwright install --with-deps chromium firefox
+
+      - name: Run tests
+        run: |
+          GREP=""
+          case "${{ github.event.inputs.suite }}" in
+            smoke) GREP="--grep @smoke" ;;
+            regression) GREP="--grep @regression|@smoke|@api" ;;
+          esac
+          npx playwright test --shard=${{ matrix.shard }}/2 $GREP
+
+      - name: Upload blob report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: blob-report-${{ matrix.shard }}
+          path: blob-report
+          retention-days: 7
+
+      - name: Upload Allure results
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-results-${{ matrix.shard }}
+          path: reports/allure-results
+          retention-days: 7
+
+  report:
+    name: Merge reports & build dashboard
+    needs: test
+    if: ${{ !cancelled() }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Install dependencies
+        run: if [ -f package-lock.json ]; then npm ci; else npm install --no-audit --no-fund; fi
+
+      - name: Download blob reports
+        uses: actions/download-artifact@v4
+        with:
+          pattern: blob-report-*
+          path: all-blob-reports
+          merge-multiple: true
+
+      - name: Download Allure results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: allure-results-*
+          path: reports/allure-results
+          merge-multiple: true
+
+      - name: Merge Playwright reports (HTML + JSON + JUnit)
+        run: |
+          PLAYWRIGHT_JSON_OUTPUT_NAME=reports/results.json \
+          PLAYWRIGHT_JUNIT_OUTPUT_NAME=reports/junit.xml \
+          npx playwright merge-reports --reporter=html,json,junit ./all-blob-reports
+          mkdir -p site && mv playwright-report site/playwright-report
+
+      - name: Restore previous dashboard history (gh-pages)
+        continue-on-error: true
+        run: |
+          git fetch origin gh-pages --depth=1
+          git show origin/gh-pages:history.json > site/history.json
+          mkdir -p reports/allure-results/history
+          for f in history.json history-trend.json duration-trend.json categories-trend.json retry-trend.json; do
+            git show origin/gh-pages:allure/history/$f > reports/allure-results/history/$f 2>/dev/null || true
+          done
+
+      - name: Allure report
+        run: |
+          cp .github/allure/categories.json reports/allure-results/ || true
+          npx allure generate reports/allure-results -o site/allure --clean
+
+      - name: Build dashboard
+        run: node scripts/generate-dashboard.js reports/results.json site site/history.json
+
+      - name: Job summary
+        run: |
+          node -e "
+            const s=require('./site/summary.json');
+            console.log('## E2E results – run #'+s.id);
+            console.log('| Pass rate | Total | Passed | Failed | Flaky | Skipped |');
+            console.log('|---|---|---|---|---|---|');
+            console.log('| '+s.passRate+'% | '+s.total+' | '+s.passed+' | '+s.failed+' | '+s.flaky+' | '+s.skipped+' |');
+          " >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Publish JUnit results
+        uses: dorny/test-reporter@v1
+        if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+        continue-on-error: true
+        with:
+          name: Playwright JUnit
+          path: reports/junit.xml
+          reporter: java-junit
+
+      - name: Upload site artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-dashboard
+          path: site
+          retention-days: 14
+
+      - name: Deploy dashboard to GitHub Pages
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          keep_files: false
+          commit_message: 'dashboard: run #${{ github.run_number }}'
+
+    permissions:
+      contents: write
+      checks: write
