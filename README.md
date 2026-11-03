@@ -1,13 +1,13 @@
 # QA Demo – Playwright E2E Automation Framework
 
-[![E2E Tests](https://github.com/__OWNER__/__REPO__/actions/workflows/e2e.yml/badge.svg)](https://github.com/__OWNER__/__REPO__/actions/workflows/e2e.yml)
-[![Dashboard](https://img.shields.io/badge/test%20dashboard-live-38bdf8)](https://__OWNER__.github.io/__REPO__/)
+[![E2E Tests](https://github.com/Ammarah95/qademo-playwright-e2e/actions/workflows/e2e.yml/badge.svg)](https://github.com/Ammarah95/qademo-playwright-e2e/actions/workflows/e2e.yml)
+[![Dashboard](https://img.shields.io/badge/test%20dashboard-live-38bdf8)](https://ammarah95.github.io/qademo-playwright-e2e/)
 ![Playwright](https://img.shields.io/badge/Playwright-1.5x-2EAD33?logo=playwright)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES2023-F7DF1E?logo=javascript&logoColor=000)
 
 End-to-end UI + API test automation for **[qademo.com](https://qademo.com)**, a live e-commerce store built for automation practice. It's written in **Playwright + JavaScript** with the **Page Object Model**. CI/CD runs on **GitHub Actions** and publishes a **test dashboard** to GitHub Pages.
 
-> **📊 Live dashboard:** https://__OWNER__.github.io/__REPO__/ (pass-rate trend, per-browser and per-spec breakdown, links to the Playwright and Allure reports)
+> **📊 Live dashboard:** https://ammarah95.github.io/qademo-playwright-e2e/ (pass-rate trend, per-browser and per-spec breakdown, links to the Playwright and Allure reports)
 
 ---
 
@@ -82,7 +82,7 @@ test('E2E: place an order and see it in order history', async () => {
 ## Getting started
 
 ```bash
-git clone https://github.com/__OWNER__/__REPO__.git && cd __REPO__
+git clone https://github.com/Ammarah95/qademo-playwright-e2e.git && cd qademo-playwright-e2e
 npm install
 npx playwright install --with-deps
 
