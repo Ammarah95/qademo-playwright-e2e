@@ -15,10 +15,10 @@
     <rect width="8" height="300" fill="#45D69A"/>
   </g>
 
-  <text x="56" y="70" class="mono muted">qademo-playwright-e2e, run #16, 16 Nov 2026</text>
+  <text x="56" y="70" class="mono muted">qademo-playwright-e2e, run #17, 17 Nov 2026</text>
   <text x="52" y="172" class="sans" font-size="104" font-weight="800" fill="#45D69A" letter-spacing="-3">100%</text>
   <text x="58" y="208" class="sans" font-size="22" fill="#E6F0F1">of 66 tests passed on the latest run</text>
-  <text x="58" y="252" class="mono" font-size="16"><tspan fill="#86A7AE">0 failed</tspan><tspan fill="#86A7AE">, 0 flaky, </tspan><tspan fill="#F3B23C">2 known defects tracked</tspan></text>
+  <text x="58" y="252" class="mono" font-size="16"><tspan fill="#86A7AE">0 failed</tspan><tspan fill="#86A7AE">, 1 flaky, </tspan><tspan fill="#F3B23C">2 known defects tracked</tspan></text>
 
   <text x="510" y="60" class="sans" font-size="17" font-weight="600" fill="#E6F0F1">By browser</text>
   
@@ -29,10 +29,10 @@
     
     
     <text x="510" y="136" class="mono label">chromium</text>
-    <text x="830" y="136" class="mono label" text-anchor="end">43/43</text>
+    <text x="830" y="136" class="mono label" text-anchor="end">42/43</text>
     <rect x="510" y="146" width="320" height="6" rx="3" fill="#E6F0F1" fill-opacity=".08"/>
-    <rect x="510" y="146" width="320.0" height="6" rx="3" fill="#45D69A"/>
-    
+    <rect x="510" y="146" width="312.6" height="6" rx="3" fill="#45D69A"/>
+    <rect x="822.6" y="146" width="7.4" height="6" fill="#F3B23C"/>
     
     <text x="510" y="180" class="mono label">firefox</text>
     <text x="830" y="180" class="mono label" text-anchor="end">14/14</text>
@@ -47,12 +47,12 @@
     
     
 
-  <text x="890" y="60" class="sans" font-size="17" font-weight="600" fill="#E6F0F1">Pass rate, last 16 runs</text>
+  <text x="890" y="60" class="sans" font-size="17" font-weight="600" fill="#E6F0F1">Pass rate, last 17 runs</text>
   <line x1="890" x2="1152" y1="92" y2="92" stroke="#E6F0F1" stroke-opacity=".08"/>
   <line x1="890" x2="1152" y1="212" y2="212" stroke="#E6F0F1" stroke-opacity=".08"/>
   <text x="1152" y="84" class="mono" font-size="13" fill="#5F8790" text-anchor="end">100%</text>
   <text x="1152" y="232" class="mono" font-size="13" fill="#5F8790" text-anchor="end">0%</text>
-  <polyline points="890.0,92.0 907.5,92.0 924.9,92.0 942.4,92.0 959.9,92.0 977.3,92.0 994.8,92.0 1012.3,92.0 1029.7,92.0 1047.2,92.0 1064.7,92.0 1082.1,92.0 1099.6,92.0 1117.1,92.0 1134.5,92.0 1152.0,92.0" fill="none" stroke="#45D69A" stroke-width="2.5" stroke-linejoin="round"/>
-  <circle cx="890.0" cy="92.0" r="4" fill="#45D69A"/><circle cx="907.5" cy="92.0" r="4" fill="#45D69A"/><circle cx="924.9" cy="92.0" r="4" fill="#45D69A"/><circle cx="942.4" cy="92.0" r="4" fill="#45D69A"/><circle cx="959.9" cy="92.0" r="4" fill="#45D69A"/><circle cx="977.3" cy="92.0" r="4" fill="#45D69A"/><circle cx="994.8" cy="92.0" r="4" fill="#45D69A"/><circle cx="1012.3" cy="92.0" r="4" fill="#45D69A"/><circle cx="1029.7" cy="92.0" r="4" fill="#45D69A"/><circle cx="1047.2" cy="92.0" r="4" fill="#45D69A"/><circle cx="1064.7" cy="92.0" r="4" fill="#45D69A"/><circle cx="1082.1" cy="92.0" r="4" fill="#45D69A"/><circle cx="1099.6" cy="92.0" r="4" fill="#45D69A"/><circle cx="1117.1" cy="92.0" r="4" fill="#45D69A"/><circle cx="1134.5" cy="92.0" r="4" fill="#45D69A"/><circle cx="1152.0" cy="92.0" r="4" fill="#45D69A"/>
-  <text x="890" y="264" class="mono muted" font-size="14">Ran in 68s</text>
+  <polyline points="890.0,92.0 906.4,92.0 922.8,92.0 939.1,92.0 955.5,92.0 971.9,92.0 988.3,92.0 1004.6,92.0 1021.0,92.0 1037.4,92.0 1053.8,92.0 1070.1,92.0 1086.5,92.0 1102.9,92.0 1119.3,92.0 1135.6,92.0 1152.0,92.0" fill="none" stroke="#45D69A" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="890.0" cy="92.0" r="4" fill="#45D69A"/><circle cx="906.4" cy="92.0" r="4" fill="#45D69A"/><circle cx="922.8" cy="92.0" r="4" fill="#45D69A"/><circle cx="939.1" cy="92.0" r="4" fill="#45D69A"/><circle cx="955.5" cy="92.0" r="4" fill="#45D69A"/><circle cx="971.9" cy="92.0" r="4" fill="#45D69A"/><circle cx="988.3" cy="92.0" r="4" fill="#45D69A"/><circle cx="1004.6" cy="92.0" r="4" fill="#45D69A"/><circle cx="1021.0" cy="92.0" r="4" fill="#45D69A"/><circle cx="1037.4" cy="92.0" r="4" fill="#45D69A"/><circle cx="1053.8" cy="92.0" r="4" fill="#45D69A"/><circle cx="1070.1" cy="92.0" r="4" fill="#45D69A"/><circle cx="1086.5" cy="92.0" r="4" fill="#45D69A"/><circle cx="1102.9" cy="92.0" r="4" fill="#45D69A"/><circle cx="1119.3" cy="92.0" r="4" fill="#45D69A"/><circle cx="1135.6" cy="92.0" r="4" fill="#45D69A"/><circle cx="1152.0" cy="92.0" r="4" fill="#45D69A"/>
+  <text x="890" y="264" class="mono muted" font-size="14">Ran in 105s</text>
 </svg>
