@@ -286,5 +286,21 @@
     "durationMs": 466208,
     "startTime": "2026-11-18T02:38:05.488Z",
     "passRate": 100
+  },
+  {
+    "id": "19",
+    "url": "https://github.com/Ammarah95/qademo-playwright-e2e/actions/runs/44441272921",
+    "branch": "main",
+    "commit": "2c87d5a",
+    "event": "schedule",
+    "total": 66,
+    "passed": 64,
+    "failed": 0,
+    "flaky": 2,
+    "skipped": 0,
+    "knownDefects": 2,
+    "durationMs": 55460,
+    "startTime": "2026-11-19T02:02:28.277Z",
+    "passRate": 100
   }
 ]
