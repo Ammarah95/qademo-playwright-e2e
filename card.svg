@@ -15,7 +15,7 @@
     <rect width="8" height="300" fill="#45D69A"/>
   </g>
 
-  <text x="56" y="70" class="mono muted">qademo-playwright-e2e, run #23, 23 Nov 2026</text>
+  <text x="56" y="70" class="mono muted">qademo-playwright-e2e, run #24, 24 Nov 2026</text>
   <text x="52" y="172" class="sans" font-size="104" font-weight="800" fill="#45D69A" letter-spacing="-3">100%</text>
   <text x="58" y="208" class="sans" font-size="22" fill="#E6F0F1">of 66 tests passed on the latest run</text>
   <text x="58" y="252" class="mono" font-size="16"><tspan fill="#86A7AE">0 failed</tspan><tspan fill="#86A7AE">, 0 flaky, </tspan><tspan fill="#F3B23C">2 known defects tracked</tspan></text>
@@ -54,5 +54,5 @@
   <text x="1152" y="232" class="mono" font-size="13" fill="#5F8790" text-anchor="end">0%</text>
   <polyline points="890.0,92.0 903.8,92.0 917.6,92.0 931.4,92.0 945.2,92.0 958.9,92.0 972.7,92.0 986.5,92.0 1000.3,92.0 1014.1,92.0 1027.9,92.0 1041.7,92.0 1055.5,92.0 1069.3,92.0 1083.1,92.0 1096.8,92.0 1110.6,92.0 1124.4,92.0 1138.2,92.0 1152.0,92.0" fill="none" stroke="#45D69A" stroke-width="2.5" stroke-linejoin="round"/>
   <circle cx="890.0" cy="92.0" r="4" fill="#45D69A"/><circle cx="903.8" cy="92.0" r="4" fill="#45D69A"/><circle cx="917.6" cy="92.0" r="4" fill="#45D69A"/><circle cx="931.4" cy="92.0" r="4" fill="#45D69A"/><circle cx="945.2" cy="92.0" r="4" fill="#45D69A"/><circle cx="958.9" cy="92.0" r="4" fill="#45D69A"/><circle cx="972.7" cy="92.0" r="4" fill="#45D69A"/><circle cx="986.5" cy="92.0" r="4" fill="#45D69A"/><circle cx="1000.3" cy="92.0" r="4" fill="#45D69A"/><circle cx="1014.1" cy="92.0" r="4" fill="#45D69A"/><circle cx="1027.9" cy="92.0" r="4" fill="#45D69A"/><circle cx="1041.7" cy="92.0" r="4" fill="#45D69A"/><circle cx="1055.5" cy="92.0" r="4" fill="#45D69A"/><circle cx="1069.3" cy="92.0" r="4" fill="#45D69A"/><circle cx="1083.1" cy="92.0" r="4" fill="#45D69A"/><circle cx="1096.8" cy="92.0" r="4" fill="#45D69A"/><circle cx="1110.6" cy="92.0" r="4" fill="#45D69A"/><circle cx="1124.4" cy="92.0" r="4" fill="#45D69A"/><circle cx="1138.2" cy="92.0" r="4" fill="#45D69A"/><circle cx="1152.0" cy="92.0" r="4" fill="#45D69A"/>
-  <text x="890" y="264" class="mono muted" font-size="14">Ran in 73s</text>
+  <text x="890" y="264" class="mono muted" font-size="14">Ran in 58s</text>
 </svg>
