@@ -15,7 +15,7 @@
     <rect width="8" height="300" fill="#45D69A"/>
   </g>
 
-  <text x="56" y="70" class="mono muted">qademo-playwright-e2e, run #24, 24 Nov 2026</text>
+  <text x="56" y="70" class="mono muted">qademo-playwright-e2e, run #25, 25 Nov 2026</text>
   <text x="52" y="172" class="sans" font-size="104" font-weight="800" fill="#45D69A" letter-spacing="-3">100%</text>
   <text x="58" y="208" class="sans" font-size="22" fill="#E6F0F1">of 66 tests passed on the latest run</text>
   <text x="58" y="252" class="mono" font-size="16"><tspan fill="#86A7AE">0 failed</tspan><tspan fill="#86A7AE">, 0 flaky, </tspan><tspan fill="#F3B23C">2 known defects tracked</tspan></text>
